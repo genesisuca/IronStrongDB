@@ -1,0 +1,1 @@
+SELECT 'Clase B';
