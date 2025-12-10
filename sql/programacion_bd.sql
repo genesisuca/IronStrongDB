@@ -388,5 +388,62 @@ BEGIN
     COMMIT;
 END;
 GO
+--Miembros con membresía "VIP"
+SELECT 
+    m.IdMiembro,
+    m.Nombre,
+    mb.Nombre AS Membresia,
+    c.FechaFin
+FROM Miembros m
+JOIN Contratos c ON c.IdMiembro = m.IdMiembro
+JOIN Membresias mb ON mb.IdMembresia = c.IdMembresia
+WHERE mb.Nombre = 'VIP';
+--Calendario de clases por horario + entrenador
+SELECT
+    c.NombreClase,
+    e.Nombre AS Entrenador,
+    c.Horario
+FROM Clases c
+LEFT JOIN Entrenadores e ON e.IdEntrenador = c.IdEntrenador
+ORDER BY c.Horario, e.Nombre;
+--Miembros que nunca han asistido a una clase
+SELECT 
+    m.IdMiembro,
+    m.Nombre
+FROM Miembros m
+LEFT JOIN Asistencias a ON a.IdMiembro = m.IdMiembro
+WHERE a.IdAsistencia IS NULL;
+--Pagos realizados en el último mes
+SELECT *
+FROM Pagos
+WHERE FechaPago >= DATEADD(MONTH, -1, GETDATE());
+--UNION
+SELECT Email FROM Miembros
+UNION
+SELECT Email FROM Entrenadores;
+--INTERSECT
+SELECT m.IdMiembro, m.Nombre
+FROM Miembros m
+WHERE m.IdMiembro IN (
+
+    SELECT c.IdMiembro
+    FROM Contratos c
+    WHERE c.FechaFin >= CAST(GETDATE() AS DATE)
+
+)
+INTERSECT
+SELECT a.IdMiembro, m.Nombre
+FROM Asistencias a
+JOIN Miembros m ON m.IdMiembro = a.IdMiembro
+WHERE a.FechaRegistro >= DATEADD(DAY, -7, GETDATE());
+--EXCEPT
+SELECT IdEntrenador, Nombre
+FROM Entrenadores
+
+EXCEPT
+
+SELECT e.IdEntrenador, e.Nombre
+FROM Entrenadores e
+JOIN Clases c ON c.IdEntrenador = e.IdEntrenador;
 
 
