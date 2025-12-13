@@ -1,22 +1,45 @@
-# IronStrongDB
+# IronStrongDB  
 
-Base de datos para proyecto de gestión de gimnasio (DDL, seeds, procedimientos y módulo web).
+Proyecto de base de datos para el gimnasio IronStrong.  
 
-## Estructura del repo
-- `sql/` — scripts: `ddl.sql`, `seed.sql`, `programacion_bd.sql`, `renovacion_membresia.sql`, `queries.sql`
-- `web/` — módulo front (index.html + assets)
-- `docs/` — documentación y capturas
+Este repositorio contiene la estructura, scripts y documentación necesaria para la creación y administración del sistema de base de datos del gimnasio.
 
-## Cómo ejecutar (MySQL 8.0)
-1. Crear base de datos e importar `sql/ddl.sql`.
-2. Insertar datos: `sql/seed.sql`.
-3. Ejecutar `sql/programacion_bd.sql` para funciones/procedimientos.
-4. Revisar `queries.sql` para reportes de ejemplo.
+---
 
-## Branching
-- `main` — producción
-- `develop` — integración
-- `feature/*` — features
+## 👥 Equipo de Desarrollo
 
-## Contacto
-Autor: TU NOMBRE - correo@example.com
+- **Antonio Astua**
+- **Genesis Ramirez**
+- **Sebastian Araya**
+- **Maria Jose**
+
+---
+
+## 🌱 Ramas principales del proyecto
+
+- `main` – Rama principal y estable del proyecto.  
+- `develop` – Rama base de integración del equipo.
+
+## 🔧 Ramas de características
+
+- `feature/gestion-miembros` – Gestión de tablas de miembros y membresías.  
+- `feature/gestion-clases` – Gestión de entrenadores, clases e inscripciones.  
+- `feature/finanzas` – Gestión de pagos y facturación.
+
+---
+
+## 🛠 Objetivo del proyecto
+
+Construir y documentar la base de datos integral del gimnasio IronStrong, permitiendo la administración de:
+
+- Miembros y membresías  
+- Entrenadores y clases  
+- Inscripciones  
+- Pagos, facturación y control financiero
+
+---
+
+## 📌 Notas del equipo
+
+Este repositorio se utiliza para prácticas colaborativas con Git y GitHub, incluyendo simulación de conflictos, flujos de trabajo con ramas, pull requests y resolución de merges.
+
